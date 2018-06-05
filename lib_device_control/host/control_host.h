@@ -101,7 +101,20 @@ control_ret_t control_init_spi(spi_mode_t spi_mode, int spi_bitrate, unsigned de
  */
 control_ret_t control_cleanup_spi(void);
 #endif
-#if (!USE_USB && !USE_XSCOPE && !USE_I2C && !USE_SPI)
+#if USE_CMD_FILE || __DOXYGEN__
+/** Initialize the command file output
+ *
+ *  \returns           Whether the initialization was successful or not
+ */
+control_ret_t control_init_cmd_file(void);
+/** Shutdown the command file output
+ *
+ *  \returns           Whether the shutdown was successful or not
+ */
+control_ret_t control_cleanup_cmd_file(void);
+#endif
+
+#if (!USE_USB && !USE_XSCOPE && !USE_I2C && !USE_SPI && !USE_CMD_FILE)
 #error "Please specify transport for lib_device_control using USE_xxx define in Makefile"
 #error "Eg. XCC_FLAGS = -DUSE_I2C=1"
 #endif // USE_XSCOPE

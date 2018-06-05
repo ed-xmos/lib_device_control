@@ -30,7 +30,6 @@ control_ret_t control_register_resources(client interface control i[n], unsigned
     if (resource_table_add(r, n0, j) != 0)
       ret += CONTROL_REGISTRATION_FAILED;
   }
-
   return ret;
 }
 
