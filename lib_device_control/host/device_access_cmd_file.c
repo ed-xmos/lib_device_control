@@ -18,7 +18,7 @@ FILE *pCMD_FILE;
 
 control_ret_t control_init_cmd_file(void)
 {
-  pCMD_FILE = fopen("/Users/Ed/Desktop/command_file.txt", "a");
+  pCMD_FILE = fopen("command_file.txt", "a");
   if(pCMD_FILE==NULL) 
   {
     printf("Error opening file.\n");
