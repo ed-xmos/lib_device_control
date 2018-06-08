@@ -5,11 +5,16 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <string.h>
-#include <unistd.h>
 #include "control_host.h"
 #include "control_host_support.h"
 #include "util.h"
 #include "xmos_beclear_control.h"
+#if defined(_MSC_VER)
+#include <windows.h>
+#else
+#include <unistd.h>
+#endif
+
 
 //#define DBG(x) x
 #define DBG(x)
@@ -34,7 +39,7 @@ control_write_command(control_resid_t resid, control_cmd_t cmd,
   char cmd_string[256];
   char tmp_string[256];
   sprintf(cmd_string, "resid:%d cmd:%d len:%d payload:", resid, cmd, (unsigned)payload_len);
-  for (int i = 0; i < payload_len; i++)
+  for (unsigned i = 0; i < payload_len; i++)
   {  
     sprintf(tmp_string, "%02x ", payload[i]);
     strcat(cmd_string, tmp_string);
